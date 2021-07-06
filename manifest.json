@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "小强助手",
+    "description": "帮你省点事",
+    "version": "1.0",
+    "permissions": [],
+    "background": {
+        "persistent": true,
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://q.baiqianglianshou.com/member/auditbuyeraccount"
+            ],
+            "js": [
+                "inject_platform.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://taodaxiang.com/credit2"
+            ],
+            "js": [
+                "inject_search.js"
+            ]
+        }
+    ]
+}
