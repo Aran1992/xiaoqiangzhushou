@@ -3,7 +3,9 @@
     "name": "小强助手",
     "description": "帮你省点事",
     "version": "1.0",
-    "permissions": [],
+    "permissions": [
+        "tabs"
+    ],
     "background": {
         "persistent": true,
         "scripts": [

@@ -18,16 +18,16 @@ chrome.extension.onRequest.addListener((request, sender, sendResponse) => {
     // 什么时候能够确定消息返回了呢？
     // 定时刷新？直到获取到内容？
 
-    const timer = setInterVal(() => {
+    const timer = setInterval(() => {
         const registerTimeText = trimStr('//*[@id="credit_content"]/table/tbody/tr[1]/td[1]/p/span/b/text()');
-        const registerTime = registerTimeText ? new Date(registerTimeText) : undefined;
         const avgWeekText = trimStr('//*[@id="credit_content"]/table/tbody/tr[3]/td[1]/p/span[2]/b/text()');
-        const avgWeek = parseInt(avgWeekText);
         const searchTimePerMonthText = trimStr('//*[@id="credit_content"]/table/tbody/tr[6]/td/p/span[4]/b/text()');
-        const searchTimePerMonth = parseInt(searchTimePerMonthText);
-        console.log(registerTimeText, avgWeekText, searchTimePerMonthText);
-        console.log(registerTime, avgWeek, searchTimePerMonth);
-        if (registerTime && avgWeek && searchTimePerMonth) {
+        console.log(registerTimeText, avgWeekText, avgWeekText);
+        if (registerTimeText && avgWeekText && avgWeekText) {
+            const registerTime = registerTimeText ? new Date(registerTimeText) : undefined;
+            const avgWeek = parseInt(avgWeekText);
+            const searchTimePerMonth = parseInt(searchTimePerMonthText);
+            console.log(registerTime, avgWeek, searchTimePerMonth);
             clearInterval(timer);
             if (!registerTime || registerTime.getYear() > 117 || avgWeek > 3 || searchTimePerMonth > 30) {
                 sendResponse({});
@@ -37,5 +37,3 @@ chrome.extension.onRequest.addListener((request, sender, sendResponse) => {
         }
     }, 1000);
 });
-
-// 2018-10-04 16:15:15
