@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "小强助手",
-    "description": "帮你省点事",
+    "name": "xiaoqiangzhushou",
+    "description": "",
     "version": "1.0",
     "permissions": [
         "tabs"
@@ -15,7 +15,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://q.baiqianglianshou.com/member/auditbuyeraccount"
+                "https://q.baiqianglianshou.com/member/auditbuyeraccount*"
             ],
             "js": [
                 "inject_platform.js"
@@ -23,11 +23,15 @@
         },
         {
             "matches": [
-                "https://taodaxiang.com/credit2"
+                "https://taodaxiang.com/credit2*"
             ],
             "js": [
                 "inject_search.js"
             ]
         }
-    ]
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "options_page": "options.html"
 }
