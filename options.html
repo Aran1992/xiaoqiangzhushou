@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <label>最晚注册年（晚于此年的拒绝，早于等于此年的通过，未知的拒绝）</label>
+            </td>
+            <td>
+                <input id="min-year" type="number">
+            </td>
+            <td>
+                <button id="save-min-year">保存最小注册年</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>最大每周平均（大于该数的拒绝，等于小于该数的通过）</label>
+            </td>
+            <td>
+                <input id="max-week-avg" type="number">
+            </td>
+            <td>
+                <button id="save-max-week-avg">保存最大每周平均</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>最大每月查询次数（大于该数的拒绝，等于小于该数的通过）</label>
+            </td>
+            <td>
+                <input id="max-month-search" type="number">
+            </td>
+            <td>
+                <button id="save-max-month-search">保存最大每月查询次数</button>
+            </td>
+        </tr>
+    </table>
+    <script src="options.js"> </script>
+</body>
+
+</html>

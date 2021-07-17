@@ -5,7 +5,17 @@ window.info = {
     lastHandledWorkerName: '',
 };
 
+window.limit = [
+    ['min-year', 2017],
+    ['max-week-avg', 3],
+    ['max-month-search', 30],
+];
+
 function query(tabId, request, sendResponse) {
+    request.limit = {};
+    window.limit.forEach(([key, value]) => {
+        request.limit[key] = localStorage[key] === undefined ? value : localStorage[key];
+    });
     chrome.tabs.sendRequest(tabId, request, (response) => {
         if (response.needQueryAgain) {
             query(tabId, request, sendResponse);
@@ -18,7 +28,7 @@ function query(tabId, request, sendResponse) {
                 window.info.refused++;
             }
             window.info.lastHandledWorkerName = request.username;
-            chrome.browserAction.setBadgeText(window.info.handled);
+            chrome.browserAction.setBadgeText({ text: window.info.handled.toString() });
         }
     });
 }

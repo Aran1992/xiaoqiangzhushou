@@ -13,7 +13,7 @@ chrome.extension.onRequest.addListener((request, sender, sendResponse) => {
 
     const timer = setInterval(() => {
         const dialogue = document.getElementById('dialog_checkcode');
-        if (dialogue && dialogue.style.display === 'none') {
+        if (dialogue && dialogue.style.display !== 'none') {
             sendResponse({ needQueryAgain: true });
             window.location.href = window.location.href;
             return;
@@ -26,7 +26,9 @@ chrome.extension.onRequest.addListener((request, sender, sendResponse) => {
             const registerTime = registerTimeText === '未知' ? undefined : new Date(registerTimeText);
             const avgWeek = parseInt(avgWeekText);
             const searchTimePerMonth = parseInt(searchTimePerMonthText);
-            if (isNaN(registerTime.getYear()) || registerTime.getYear() > 117 || avgWeek > 3 || searchTimePerMonth > 30) {
+            const year = new Date();
+            year.setFullYear(request.limit['max-yaer']);
+            if (!registerTime || isNaN(registerTime.getYear()) || registerTime.getYear() > year.getYear() || avgWeek > request.limit['max-week-avg'] || searchTimePerMonth > request.limit['max-month-search']) {
                 sendResponse({ isWorkerCredible: false });
             } else {
                 sendResponse({ isWorkerCredible: true });

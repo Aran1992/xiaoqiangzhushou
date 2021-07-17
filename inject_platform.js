@@ -9,14 +9,14 @@ const timer = setInterval(() => {
                 setTimeout(() => {
                     const confirmA = document.evaluate('//*[@id="layui-layer1"]/div[3]/a[1]', document).iterateNext();
                     confirmA.click();
-                }, 0);
+                }, 1000);
             } else {
                 const a = document.evaluate('//*[@id="form1"]/table/tbody/tr[1]/td[10]/a', document).iterateNext();
                 a.click();
                 setTimeout(() => {
                     const confirmA = document.evaluate('//*[@id="layui-layer1"]/div[3]/a[1]', document).iterateNext();
                     confirmA.click();
-                }, 0);
+                }, 1000);
             }
         });
     } else {
