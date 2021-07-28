@@ -12,8 +12,14 @@ chrome.extension.onRequest.addListener((request, sender, sendResponse) => {
     button.click();
 
     const timer = setInterval(() => {
-        const dialogue = document.getElementById('dialog_checkcode');
-        if (dialogue && dialogue.style.display !== 'none') {
+        const dialogueError = document.getElementById('dialog_error');
+        if (dialogueError && dialogueError.style.display !== 'none') {
+            sendResponse({ needQueryAgain: true });
+            window.location.href = window.location.href;
+            return;
+        }
+        const dialogueCheckCode = document.getElementById('dialog_checkcode');
+        if (dialogueCheckCode && dialogueCheckCode.style.display !== 'none') {
             sendResponse({ needQueryAgain: true });
             window.location.href = window.location.href;
             return;
